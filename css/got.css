@@ -1,6 +1,20 @@
 body {
   background-image: url("../assets/site/mapblue.jpg");
+  font-family: 'GameOfThrones';
+  font-size: 9px;
   margin: auto;
+
+}
+
+@font-face {
+  font-family:
+    GameOfThrones;
+  src: url("../fonts/Game\ of\ Thrones.ttf")
+}
+
+h3 {
+  font-size: 20px;
+  text-align: center;
 }
 
 .div_left {
@@ -11,33 +25,52 @@ body {
 }
 
 .div_sidebar {
-  background-color: rgb(60, 60, 60);
+  background-color: rgb(70, 70, 70);
   height: 100%;
   width: 20%;
   position: absolute;
   right: 0;
 }
 
+.div__p-notfound {
+  font-size: 15px;
+  text-align: center;
+}
+
 .left__portaits {
   float: left;
   text-align: center;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
   width: 12.5%;
+}
 
+.left__portaits:hover {
+  cursor: url("../assets/icons/ravenicon.png"), auto;
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .div__input {
   bottom: 5px;
   height: 23px;
+  left: 20px;
   margin: 5px;
   position: absolute;
   width: 200px;
 }
 
 .div__button {
+  background: black;
   bottom: 5px;
+  border: black;
+  border-radius: 4px;
+  color: white;
   height: 30px;
   margin: 5px;
   position: absolute;
-  right: 0;
-  width: 75px;
+  right: 25px;
+  width: 40px;
 }

@@ -16,7 +16,8 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
   var liveCharacters = deadOrAlive(userDatas);
   gameOfThronesSort(liveCharacters);
   gameOfThronesCharactersPortrait(liveCharacters);
-  characterSearch(liveCharacters);
+  characterSearch(liveCharacters, liveCharacters.length);
+  searchCharacterButton(liveCharacters);
 }
 
 getGameOfThronesCharacterDatas(
@@ -59,13 +60,18 @@ function gameOfThronesCharactersPortrait(livingCharactersArray) {
   map.innerHTML = portraitDivs;
 }
 
-function characterSearch(livingCharactersArray) {
-  var characterInput = document.querySelector('#characterInput');
+function searchCharacterButton(livingCharactersArray) {
+  document.querySelector('#searchButton').addEventListener('click', function fc() {
+    characterSearch(livingCharactersArray);
+  });
+}
+
+function characterSearch(livingCharactersArray, livingCharactersArrayLength) {
+  var characterInput = document.querySelector('#characterInput').value;
   var sidebarText = document.querySelector('#sidebarText');
   var characterDescription = '';
-
-  for (var i = 0; i < livingCharactersArray.length; i++) {
-    if (characterInput === livingCharactersArray[i].name) {
+  for (var i = 0; i < livingCharactersArrayLength; i++) {
+    if (characterInput.toLowerCase() === livingCharactersArray[i].name.toLowerCase()) {
       characterDescription = `<div>
       <img src='${livingCharactersArray[i].picture}' alt='${livingCharactersArray[i].name}'>
       <div>
@@ -78,5 +84,5 @@ function characterSearch(livingCharactersArray) {
       return;
     }
   }
-  sidebarText.innerHTML =
+  sidebarText.innerHTML = `<p class='div__p-notfound'>${'Charachter not found'}</p>`;
 }
