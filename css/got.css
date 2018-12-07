@@ -1,0 +1,43 @@
+body {
+  background-image: url("../assets/site/mapblue.jpg");
+  margin: auto;
+}
+
+.div_left {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  width: 80%;
+}
+
+.div_sidebar {
+  background-color: rgb(60, 60, 60);
+  height: 100%;
+  width: 20%;
+  position: absolute;
+  right: 0;
+}
+
+.left__portaits {
+  float: left;
+  text-align: center;
+  width: 12.5%;
+
+}
+
+.div__input {
+  bottom: 5px;
+  height: 23px;
+  margin: 5px;
+  position: absolute;
+  width: 200px;
+}
+
+.div__button {
+  bottom: 5px;
+  height: 30px;
+  margin: 5px;
+  position: absolute;
+  right: 0;
+  width: 75px;
+}
