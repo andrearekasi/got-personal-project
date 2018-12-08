@@ -36,7 +36,8 @@ h3 {
   text-align: center;
 }
 
-div.left__portraits .div__img-portrait {
+
+.left__portraits .div__div {
   float: left;
   position: relative;
   text-align: center;
@@ -47,7 +48,7 @@ div.left__portraits .div__img-portrait {
   width: 12.5%;
 }
 
-.left__portraits .div__img-portrait:hover {
+.left__portraits .div__div:hover {
   cursor: pointer;
   -webkit-transform: scale(1.2);
   transform: scale(1.2);

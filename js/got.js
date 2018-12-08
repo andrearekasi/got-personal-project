@@ -124,5 +124,7 @@ function getCharectersDescription(gotChar) {
     <p class='div__p'>${gotChar[i].name}</p>`;
     addCustomListenerForDivs(gotChar, div, i);
     picturesDiv.appendChild(div);
+    div.className = 'div__div';
   }
+
 }
