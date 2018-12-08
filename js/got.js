@@ -16,8 +16,6 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
   var liveCharacters = deadOrAlive(userDatas);
   gameOfThronesSort(liveCharacters);
   gameOfThronesCharactersPortrait(liveCharacters);
-  characterSearch(liveCharacters, liveCharacters.length);
-  searchCharacterButton(liveCharacters);
 }
 
 getGameOfThronesCharacterDatas(
@@ -28,6 +26,7 @@ getGameOfThronesCharacterDatas(
 // Live servert használd mindig!!!!!
 /* IDE ÍRD A FÜGGVÉNYEKET!!!!!! NE EBBE AZ EGY SORBA HANEM INNEN LEFELÉ! */
 
+// karakterek abc sorrendbe tétele
 function gameOfThronesSort(userDatas) {
   userDatas.sort(function customSort(a, b) {
     if (a.name > b.name) {
@@ -37,7 +36,7 @@ function gameOfThronesSort(userDatas) {
   });
 }
 
-
+// élő karakterek kiszűrése
 function deadOrAlive(userDatas) {
   var aliveArray = [];
   for (var i = 0; i < userDatas.length; i++) {
@@ -48,37 +47,57 @@ function deadOrAlive(userDatas) {
   return aliveArray;
 }
 
-
-function gameOfThronesCharactersPortrait(livingCharactersArray) {
+// portrék megjelenítése
+function gameOfThronesCharactersPortrait(gotChar) {
   var map = document.querySelector('#map');
   var portraitDivs = '';
-  for (var i = 0; i < livingCharactersArray.length; i++) {
-    portraitDivs += `<div class='left__portaits'><img src='${livingCharactersArray[i].portrait}'>
-    <p class='div__p'>${livingCharactersArray[i].name}</p>
+  for (var i = 0; i < gotChar.length; i++) {
+    portraitDivs += `<div class='left__portaits'><img id='character${i}' src='${gotChar[i].portrait}'>
+    <p class='div__p'>${gotChar[i].name}</p>
     </div>`;
   }
   map.innerHTML = portraitDivs;
+  searchCharacterButton(gotChar, gotChar.length);
+  clickPortraits(gotChar, gotChar.length);
 }
 
-function searchCharacterButton(livingCharactersArray) {
+// kattintásra infók előhívása
+function clickPortraits(gotChar, gotCharLength) {
+  for (var i = 0; i < gotChar.length; i++) {
+    // var picturesById = document.querySelector('#character[i]');
+    this.addEventListener('click', function func() {
+      characterClickSearch(gotChar, gotCharLength);
+    });
+  }
+}
+
+function characterClickSearch(gotChar, gotCharLength) {}
+
+// keresőmező működtetése
+function searchCharacterButton(gotChar, gotCharLength) {
   document.querySelector('#searchButton').addEventListener('click', function fc() {
-    characterSearch(livingCharactersArray);
+    characterSearch(gotChar, gotCharLength);
   });
 }
 
-function characterSearch(livingCharactersArray, livingCharactersArrayLength) {
+// infók megjelenítése a sidebarban
+function characterSearch(gotChar, gotCharLength) {
   var characterInput = document.querySelector('#characterInput').value;
   var sidebarText = document.querySelector('#sidebarText');
   var characterDescription = '';
-  for (var i = 0; i < livingCharactersArrayLength; i++) {
-    if (characterInput.toLowerCase() === livingCharactersArray[i].name.toLowerCase()) {
+  var flag = '';
+  for (var i = 0; i < gotCharLength; i++) {
+    if (!gotChar[i].house) {
+      flag = '';
+    } else {
+      flag = `<img class='div__flag' src='./assets/houses/${gotChar[i].house}.png'></img>`;
+    }
+    if (characterInput.toLowerCase() === gotChar[i].name.toLowerCase()) {
       characterDescription = `<div>
-      <img src='${livingCharactersArray[i].picture}' alt='${livingCharactersArray[i].name}'>
-      <div>
-      ${livingCharactersArray[i].name}
-      <img src='${livingCharactersArray[i].house}.png'>
-      </div>
-      <p>${livingCharactersArray[i].bio}</p>
+      <img class='div__img-charpictures' src='${gotChar[i].picture}' alt='${gotChar[i].name}'>
+      <div class='div__char-name'>${gotChar[i].name}</div>
+      <div>${flag}</div>
+      <p class='div__p-bio'>${gotChar[i].bio}</p>
       </div>`;
       sidebarText.innerHTML = characterDescription;
       return;

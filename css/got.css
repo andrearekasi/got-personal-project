@@ -3,7 +3,6 @@ body {
   font-family: 'GameOfThrones';
   font-size: 9px;
   margin: auto;
-
 }
 
 @font-face {
@@ -39,6 +38,7 @@ h3 {
 
 .left__portaits {
   float: left;
+  position: relative;
   text-align: center;
   -webkit-transform: scale(1);
   transform: scale(1);
@@ -48,7 +48,7 @@ h3 {
 }
 
 .left__portaits:hover {
-  cursor: url("../assets/icons/ravenicon.png"), auto;
+  cursor: pointer;
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
@@ -73,4 +73,25 @@ h3 {
   position: absolute;
   right: 25px;
   width: 40px;
+}
+
+.div__img-charpictures {
+  max-width: 285px;
+  padding: 10px;
+}
+
+.div__char-name {
+  font-size: 15px;
+  padding: 10px;
+}
+
+img.div__flag {
+  float: right;
+  padding: 0px 10px;
+  width: 40px;
+}
+
+.div__p-bio {
+  font-size: 12px;
+  padding: 10px;
 }
