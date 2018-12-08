@@ -16,6 +16,7 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
   var liveCharacters = deadOrAlive(userDatas);
   gameOfThronesSort(liveCharacters);
   gameOfThronesCharactersPortrait(liveCharacters);
+  getCharectersDescription(liveCharacters);
 }
 
 getGameOfThronesCharacterDatas(
@@ -52,26 +53,12 @@ function gameOfThronesCharactersPortrait(gotChar) {
   var map = document.querySelector('#map');
   var portraitDivs = '';
   for (var i = 0; i < gotChar.length; i++) {
-    portraitDivs += `<div class='left__portaits'><img id='character${i}' src='${gotChar[i].portrait}'>
-    <p class='div__p'>${gotChar[i].name}</p>
+    portraitDivs += `<div class='left__portraits'>
     </div>`;
   }
   map.innerHTML = portraitDivs;
   searchCharacterButton(gotChar, gotChar.length);
-  clickPortraits(gotChar, gotChar.length);
 }
-
-// kattintásra infók előhívása
-function clickPortraits(gotChar, gotCharLength) {
-  for (var i = 0; i < gotChar.length; i++) {
-    // var picturesById = document.querySelector('#character[i]');
-    this.addEventListener('click', function func() {
-      characterClickSearch(gotChar, gotCharLength);
-    });
-  }
-}
-
-function characterClickSearch(gotChar, gotCharLength) {}
 
 // keresőmező működtetése
 function searchCharacterButton(gotChar, gotCharLength) {
@@ -104,4 +91,38 @@ function characterSearch(gotChar, gotCharLength) {
     }
   }
   sidebarText.innerHTML = `<p class='div__p-notfound'>${'Charachter not found'}</p>`;
+}
+
+// kattintásra infók előhívása
+function getPicturesDiv() {
+  var picturesDiv = document.querySelector('.left__portraits');
+  return picturesDiv;
+}
+
+function showDescription(gotChar, index) {
+  var picturesDiv = getPicturesDiv();
+  picturesDiv.children =
+    //var characterDiv = picturesDiv.children;
+    document.querySelector('#sidebarText').innerHTML = `<div>
+      <img class='div__img-charpictures' src='${gotChar[index].picture}' alt='${gotChar[index].name}'>
+      <div class='div__char-name'>${gotChar[index].name}</div>
+      <p class='div__p-bio'>${gotChar[index].bio}</p>
+      </div>`;
+}
+
+function addCustomListenerForDivs(gotChar, element, index) {
+  element.addEventListener('click', function func() {
+    showDescription(gotChar, index);
+  });
+}
+
+function getCharectersDescription(gotChar) {
+  var picturesDiv = getPicturesDiv();
+  for (var i = 0; i < gotChar.length; i++) {
+    var div = document.createElement('div');
+    div.innerHTML = `<img class='div__img-portrait' src='${gotChar[i].portrait}'>
+    <p class='div__p'>${gotChar[i].name}</p>`;
+    addCustomListenerForDivs(gotChar, div, i);
+    picturesDiv.appendChild(div);
+  }
 }

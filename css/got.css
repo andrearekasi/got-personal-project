@@ -36,7 +36,7 @@ h3 {
   text-align: center;
 }
 
-.left__portaits {
+div.left__portraits .div__img-portrait {
   float: left;
   position: relative;
   text-align: center;
@@ -47,7 +47,7 @@ h3 {
   width: 12.5%;
 }
 
-.left__portaits:hover {
+.left__portraits .div__img-portrait:hover {
   cursor: pointer;
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
@@ -94,4 +94,12 @@ img.div__flag {
 .div__p-bio {
   font-size: 12px;
   padding: 10px;
+}
+
+.hidden-imgs {
+  display: none;
+}
+
+.hidden-ps {
+  display: none;
 }
