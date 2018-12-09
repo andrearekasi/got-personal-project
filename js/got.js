@@ -1,6 +1,6 @@
 function getGameOfThronesCharacterDatas(url, callbackFunc) {
   var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
+  xhttp.onreadystatechange = function fc() {
     if (this.readyState === 4 && this.status === 200) {
       callbackFunc(this);
     }
@@ -85,9 +85,8 @@ function characterSearch(gotChar, gotCharLength) {
     }
     if (characterInput.toLowerCase() === gotChar[i].name.toLowerCase()) {
       characterDescription = `<div>
-      <img class='div__img-charpictures' src='${gotChar[i].picture}' alt='${
-        gotChar[i].name
-      }'>
+      <img class='div__img-charpictures' src='${gotChar[i].picture}' 
+      alt='${gotChar[i].name}'>
       <div class='div__char-name'>${gotChar[i].name}</div>
       <div>${flag}</div>
       <p class='div__p-bio'>${gotChar[i].bio}</p>
