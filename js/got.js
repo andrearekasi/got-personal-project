@@ -1,6 +1,6 @@
 function getGameOfThronesCharacterDatas(url, callbackFunc) {
   var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
+  xhttp.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
       callbackFunc(this);
     }
@@ -62,9 +62,11 @@ function gameOfThronesCharactersPortrait(gotChar) {
 
 // keresőmező működtetése
 function searchCharacterButton(gotChar, gotCharLength) {
-  document.querySelector('#searchButton').addEventListener('click', function fc() {
-    characterSearch(gotChar, gotCharLength);
-  });
+  document
+    .querySelector('#searchButton')
+    .addEventListener('click', function fc() {
+      characterSearch(gotChar, gotCharLength);
+    });
 }
 
 // infók megjelenítése a sidebarban
@@ -77,11 +79,15 @@ function characterSearch(gotChar, gotCharLength) {
     if (!gotChar[i].house) {
       flag = '';
     } else {
-      flag = `<img class='div__flag' src='./assets/houses/${gotChar[i].house}.png'></img>`;
+      flag = `<img class='div__flag' src='./assets/houses/${
+        gotChar[i].house
+      }.png'></img>`;
     }
     if (characterInput.toLowerCase() === gotChar[i].name.toLowerCase()) {
       characterDescription = `<div>
-      <img class='div__img-charpictures' src='${gotChar[i].picture}' alt='${gotChar[i].name}'>
+      <img class='div__img-charpictures' src='${gotChar[i].picture}' alt='${
+        gotChar[i].name
+      }'>
       <div class='div__char-name'>${gotChar[i].name}</div>
       <div>${flag}</div>
       <p class='div__p-bio'>${gotChar[i].bio}</p>
@@ -101,10 +107,12 @@ function getPicturesDiv() {
 
 function showDescription(gotChar, index) {
   var picturesDiv = getPicturesDiv();
-  picturesDiv.children =
-    //var characterDiv = picturesDiv.children;
-    document.querySelector('#sidebarText').innerHTML = `<div>
-      <img class='div__img-charpictures' src='${gotChar[index].picture}' alt='${gotChar[index].name}'>
+
+  picturesDiv.children = document.querySelector(
+    '#sidebarText'
+  ).innerHTML = `<div>
+      <img class='div__img-charpictures' src='${gotChar[index].picture}' 
+      alt='${gotChar[index].name}'>
       <div class='div__char-name'>${gotChar[index].name}</div>
       <p class='div__p-bio'>${gotChar[index].bio}</p>
       </div>`;
@@ -120,11 +128,12 @@ function getCharectersDescription(gotChar) {
   var picturesDiv = getPicturesDiv();
   for (var i = 0; i < gotChar.length; i++) {
     var div = document.createElement('div');
-    div.innerHTML = `<img class='div__img-portrait' src='${gotChar[i].portrait}'>
+    div.innerHTML = `<img class='div__img-portrait' src='${
+      gotChar[i].portrait
+    }'>
     <p class='div__p'>${gotChar[i].name}</p>`;
     addCustomListenerForDivs(gotChar, div, i);
     picturesDiv.appendChild(div);
     div.className = 'div__div';
   }
-
 }

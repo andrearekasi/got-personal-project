@@ -1,5 +1,6 @@
 body {
   background-image: url("../assets/site/mapblue.jpg");
+  display: flex;
   font-family: 'GameOfThrones';
   font-size: 9px;
   margin: auto;
@@ -17,8 +18,12 @@ h3 {
 }
 
 .div_left {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   height: 100%;
   left: 0;
+  min-width: 80%;
   position: absolute;
   width: 80%;
 }
@@ -38,8 +43,8 @@ h3 {
 
 
 .left__portraits .div__div {
+  box-sizing: border-box;
   float: left;
-  position: relative;
   text-align: center;
   -webkit-transform: scale(1);
   transform: scale(1);
@@ -77,8 +82,9 @@ h3 {
 }
 
 .div__img-charpictures {
-  max-width: 285px;
+  height: 170px;
   padding: 10px;
+  width: 285px;
 }
 
 .div__char-name {
@@ -95,12 +101,4 @@ img.div__flag {
 .div__p-bio {
   font-size: 12px;
   padding: 10px;
-}
-
-.hidden-imgs {
-  display: none;
-}
-
-.hidden-ps {
-  display: none;
 }
