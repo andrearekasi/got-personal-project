@@ -106,13 +106,21 @@ function getPicturesDiv() {
 
 function showDescription(gotChar, index) {
   var picturesDiv = getPicturesDiv();
-
+  var flag = '';
+  if (!gotChar[index].house) {
+    flag = '';
+  } else {
+    flag = `<img class='div__flag' src='./assets/houses/${
+      gotChar[index].house
+    }.png'></img>`;
+  }
   picturesDiv.children = document.querySelector(
     '#sidebarText'
   ).innerHTML = `<div>
       <img class='div__img-charpictures' src='${gotChar[index].picture}' 
       alt='${gotChar[index].name}'>
       <div class='div__char-name'>${gotChar[index].name}</div>
+      <div>${flag}</div>
       <p class='div__p-bio'>${gotChar[index].bio}</p>
       </div>`;
 }
